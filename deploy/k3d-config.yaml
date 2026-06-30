@@ -1,0 +1,8 @@
+# k3d cluster definition. One server node, two agent (worker) nodes.
+# k3d runs a real Kubernetes cluster inside Docker on your laptop, for free.
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: regolith
+servers: 1
+agents: 2

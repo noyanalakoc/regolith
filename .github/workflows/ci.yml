@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build kernel image
+        run: docker build -t regolith-kernel:dev ./kernel
+
+      - name: Smoke test the kernel
+        run: |
+          out=$(docker run --rm regolith-kernel:dev --samples 100000 --seed 1)
+          echo "kernel said: $out"
+          echo "$out" | grep -q '"estimate"' || (echo "no estimate in output" && exit 1)

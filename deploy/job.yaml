@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: montecarlo
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: montecarlo
+          image: regolith-kernel:dev
+          imagePullPolicy: IfNotPresent
+          args: ["--samples", "10000000", "--seed", "1"]

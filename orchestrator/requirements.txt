@@ -1,0 +1,6 @@
+# Week 1 needs nothing here: the coordinator uses only the Python standard
+# library and shells out to kubectl.
+#
+# Later weeks will add:
+#   matplotlib   # week 4, plotting the results figure
+#   numpy        # week 4, sweep aggregation
